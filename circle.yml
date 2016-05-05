@@ -1,7 +1,7 @@
 dependencies:
   pre:
   post:
-    - cd marstime; mvn clean build exec:java
+    - mvn clean build exec:java
 
 test:
   post:
