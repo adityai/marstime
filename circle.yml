@@ -7,3 +7,8 @@ test:
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+
+notify:
+  webhooks:
+    - url: https://hooks.slack.com/services/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
+    
