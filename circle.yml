@@ -1,0 +1,9 @@
+dependencies:
+  pre:
+  post:
+    - cd marstime; mvn clean build exec:java
+
+test:
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
