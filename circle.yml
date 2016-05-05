@@ -1,7 +1,7 @@
 dependencies:
   pre:
   post:
-    - mvn clean package exec:java
+    - mvn exec:java
 
 test:
   post:
