@@ -34,7 +34,7 @@ public class Marstime {
 		double eot = getEOT(ls, vMinusM);
 		double eotH = getEOTHours(eot);
 		System.out.println(eot + " = " + eotH + " = " + getTimeString(eotH));
-		System.out.println(getTimeString(-0.34585));
+		System.out.println("Expected: " + getTimeString(-0.34585));
 	}
 		
 	private static double getEOT(double ls, double vMinusM) {
