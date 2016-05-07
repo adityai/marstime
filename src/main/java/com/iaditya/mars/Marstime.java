@@ -23,18 +23,42 @@ public class Marstime {
 //		double utc;
 		BigDecimal millis = new BigDecimal("947116800000");
 		BigDecimal jD_UT_BD = new BigDecimal("2440587.5").add(millis.divide(new BigDecimal("86400000")));//2451549.5;
-		
-		double jD_UT = 2451549.5;
+		System.out.println("jD_UT_BD = " + jD_UT_BD);
+     
+		double jD_UT = jD_UT_BD.doubleValue(); //2451549.5;
 		double ttMinusUTC = 64.184;
-		double jD_TT = jD_UT + ((ttMinusUTC) / 86400); //2451549.50074;
+		
+      double jD_TT = jD_UT + ((ttMinusUTC) / 86400); //2451549.50074;
+      System.out.println("jD_TT = " + jD_TT);
+     
 		double deltaTj2000 = jD_TT - 2451545.0;//4.50074;
+      System.out.println("deltaTj2000 = " + deltaTj2000);
+      
+      double M = 19.3871 + 0.52402073 * deltaTj2000;
+      System.out.println("M = " + M);
+     
 		double aFMS = 270.3871 + 0.524038496 * deltaTj2000;//272.7456;
-		double vMinusM = 4.44193;
-		double ls = aFMS + vMinusM;
-		double eot = getEOT(ls, vMinusM);
+      System.out.println("aFMS = " + aFMS);
+     
+      //Complex calculation using sigma. Revisit later.
+      double PBS = 0.00142;
+      System.out.println("PBS = " + PBS);
+     
+		double vMinusM = ( ( 10.691 + 3.0 * Math.pow(10, -7) * deltaTj2000 ) * Math.sin(Math.toRadians(M) ) ) + 
+                        0.623 * Math.sin(Math.toRadians(2 * M)) + 
+        						0.05 * Math.sin(Math.toRadians(3 * M)) + 
+        						0.005 * Math.sin(Math.toRadians(4 * M)) + 
+        						0.0005 * Math.sin(Math.toRadians(5 * M)) + PBS; //4.44193;
+      System.out.println("vMinusM = " + vMinusM);
+     
+		double ls = aFMS + vMinusM; //277.18758
+      System.out.println("ls = " + ls);
+     
+		double eot = getEOT(ls, vMinusM); //-5.18774 = -0.34585h = -0:20:45
 		double eotH = getEOTHours(eot);
-		System.out.println(eot + " = " + eotH + " = " + getTimeString(eotH));
-		System.out.println("Expected: -0.34585 = " + getTimeString(-0.34585));
+		System.out.println("Actual  : " + eot + " = " + eotH + " = " + getTimeString(eotH));
+		System.out.println("Expected: -5.18774 = -0.34585h = -0:20:45");
+     
 	}
 		
 	private static double getEOT(double ls, double vMinusM) {
