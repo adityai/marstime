@@ -58,7 +58,9 @@ public class Marstime {
 		double eotH = getEOTHours(eot);
 		System.out.println("Actual  : " + eot + " = " + eotH + " = " + getTimeString(eotH));
 		System.out.println("Expected: -5.18774 = -0.34585h = -0:20:45");
-     
+      
+      double MTC =   ( 24 * ( ( (jD_TT - 2451549.5)/1.0274912517 )+ 44796.0 - 0.0009626 ) ) % 24  ;
+      System.out.println("MTC_hours = " + MTC + " MTC = " + getTimeString(MTC) );
 	}
 		
 	private static double getEOT(double ls, double vMinusM) {
