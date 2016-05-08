@@ -70,7 +70,7 @@ public class Marstime {
 		double LTST = LMST + (eot / 15);
 		System.out.println("LTST_hours = " + LTST + " LTST = " + getTimeString(LTST));
 		
-		double lambdaS = ((MTC + eot) * 15) + 180;
+		double lambdaS = ((MTC + eot) / 15) + 180;
 		System.out.println("lambdaS = " + lambdaS);
 		System.out.println("Expected lambdaS: 174.72600");
 	}
