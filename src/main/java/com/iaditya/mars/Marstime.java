@@ -61,6 +61,11 @@ public class Marstime {
       
       double MTC =   ( 24 * ( ( (jD_TT - 2451549.5)/1.0274912517 )+ 44796.0 - 0.0009626 ) ) % 24  ;
       System.out.println("MTC_hours = " + MTC + " MTC = " + getTimeString(MTC) );
+		
+		//lambda is the Mars latitude. 0 implies that the location is on the Mars prime meridian.
+		double lambda = 0D;
+		double LMST = MTC - (lambda / 15 );
+		System.out.println("LMST_hours = " + LMST + " LMST = " + getTimeString(LMST));
 	}
 		
 	private static double getEOT(double ls, double vMinusM) {
