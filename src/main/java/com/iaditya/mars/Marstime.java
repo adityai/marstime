@@ -7,6 +7,7 @@
 package com.iaditya.mars;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 
 
@@ -188,15 +189,27 @@ public class Marstime {
 	private double lambdaS;
 	
 	public static void main(String[] args) {
-		Marstime marstime = new Marstime( new BigDecimal("947116800000"), 64.184, 0);
+		//Marstime marstime = new Marstime( new BigDecimal("947116800000"), 64.184, 0);
+		//marstime.go();
+     
+      Long utc = System.currentTimeMillis();
+		String utcString = utc.toString();     
+      System.out.println(utcString);
+     
+		Marstime marstime = new Marstime( new BigDecimal(utcString), 64.184, 0);
+     
+		//Marstime marstime = new Marstime( new BigDecimal("1468216812405"), 64.184, 0);
+     	//Marstime marstime = new Marstime( new BigDecimal("947116800000"), 64.184, 0);
+
 		marstime.go();
+
 	}
 
 	/**
 	 * POC method that performs all the calculations for example 1.
 	 */
 	private void go() {
-		BigDecimal jD_UT_BD = new BigDecimal("2440587.5").add( getMillis().divide(new BigDecimal("86400000")));//2451549.5;
+		BigDecimal jD_UT_BD = new BigDecimal("2440587.5").add( getMillis().divide(new BigDecimal("86400000"), RoundingMode.HALF_UP));//2451549.5;
 		System.out.println("jD_UT_BD = " + jD_UT_BD);
      
 		double jD_UT = jD_UT_BD.doubleValue(); //2451549.5;
