@@ -2,6 +2,7 @@ dependencies:
   pre:
   post:
     - mvn clean package exec:java
+    - sudo docker run -d -v $PWD/target/:/usr/src/myapp -w /usr/src/myapp java:7 Marstime.java
 
 test:
   post:
