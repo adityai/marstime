@@ -1,5 +1,7 @@
 dependencies:
-  pre:
+  pre: 
+   - sudo service docker start; sudo service docker status; sudo docker -v; sudo docker info;
+  
   post:
     - mvn clean package exec:java
     - sudo docker run -d -v $PWD/target/:/usr/src/myapp -w /usr/src/myapp java:7 Marstime.java
