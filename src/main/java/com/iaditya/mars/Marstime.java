@@ -241,8 +241,9 @@ public class Marstime {
      
 		double eot = calculateEOT(ls, vMinusM); //-5.18774 = -0.34585h = -0:20:45
 		double eotH = calculateEOTHours(eot);
-		System.out.println("Actual  : " + eot + " = " + eotH + " = " + generateTimeString(eotH));
-		System.out.println("Expected: -5.18774 = -0.34585h = -0:20:45");
+//		Uncomment for debugging:
+//		System.out.println("Actual  : " + eot + " = " + eotH + " = " + generateTimeString(eotH));
+//		System.out.println("Expected: -5.18774 = -0.34585h = -0:20:45");
       
 		double MTC =   ( 24 * ( ( (jD_TT - 2451549.5)/1.0274912517 )+ 44796.0 - 0.0009626 ) ) % 24  ;
 		System.out.println("MTC_hours = " + MTC + " MTC = " + generateTimeString(MTC) );
@@ -260,7 +261,9 @@ public class Marstime {
 		System.out.println("lambdaS = " + lambdaS);
 
 	 	double expectedLambdaS = ((23.99425 - 0.34585) * 15) - 180; 
- 		System.out.println("Expected lambdaS: 174.72600 = " + expectedLambdaS);
+//		Uncomment for debugging
+// 		System.out.println("Expected lambdaS: 174.72600 = " + expectedLambdaS);
+	 	
 // 		double secondLambdaS = ((13.16537 - 0.85170) * 15) - 180;
 // 		System.out.println("Second example lambdaS: " + secondLambdaS);
 	}
