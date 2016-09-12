@@ -194,13 +194,14 @@ public class Marstime {
      
       Long utc = System.currentTimeMillis();
 		String utcString = utc.toString();     
-      System.out.println(utcString);
-     
+      System.out.println("UTC: " + utcString);
+      
 		Marstime marstime = new Marstime( new BigDecimal(utcString), 64.184, 0);
+		marstime.go();
      
 		//Marstime marstime = new Marstime( new BigDecimal("1468216812405"), 64.184, 0);
-     	//Marstime marstime = new Marstime( new BigDecimal("947116800000"), 64.184, 0);
-
+		System.out.println("***** Test for midnight on millenium:");
+     	marstime = new Marstime( new BigDecimal("947116800000"), 64.184, 0);
 		marstime.go();
 
 	}
