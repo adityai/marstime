@@ -14,7 +14,6 @@ public class MarstimeTest {
 		System.out.println("***** Test for midnight on millenium:");
      	Marstime marstime = new Marstime( new BigDecimal("947116800000"), 64.184, 0);
 		assertEquals("23:59:39", marstime.go());
-		
 	}
 
 }
