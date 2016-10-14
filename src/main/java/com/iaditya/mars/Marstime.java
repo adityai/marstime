@@ -209,7 +209,7 @@ public class Marstime {
 	/**
 	 * POC method that performs all the calculations for example 1.
 	 */
-	private void go() {
+	protected String go() {
 		BigDecimal jD_UT_BD = new BigDecimal("2440587.5").add( getMillis().divide(new BigDecimal("86400000"), RoundingMode.HALF_UP));//2451549.5;
 		System.out.println("jD_UT_BD = " + jD_UT_BD);
      
@@ -252,6 +252,7 @@ public class Marstime {
 	//lambda is the Mars latitude. 0 implies that the location is on the Mars prime meridian.
 		double lambda = 0D;
 		double LMST = MTC - (lambda / 15 );
+		String strLMSTTime = generateTimeString(LMST);
 		System.out.println("LMST_hours = " + LMST + " LMST = " + generateTimeString(LMST));
 		
 		double LTST = LMST + (eot / 15);
@@ -267,6 +268,7 @@ public class Marstime {
 	 	
 // 		double secondLambdaS = ((13.16537 - 0.85170) * 15) - 180;
 // 		System.out.println("Second example lambdaS: " + secondLambdaS);
+	 	return strLMSTTime;
 	}
 		
 	private static double calculateEOT(double ls, double vMinusM) {
