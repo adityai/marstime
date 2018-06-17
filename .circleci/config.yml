@@ -5,5 +5,5 @@ jobs:
       - image: circleci/java
     steps:
       - checkout
-      - run: mvn clean package test
+      - run: mvn clean package test exec:java
  
