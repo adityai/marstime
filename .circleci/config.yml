@@ -5,6 +5,6 @@ jobs:
       - image: circleci/java
     steps:
       - checkout
-      - yum install -y maven
+      - run: apt-get install -y maven
       - run: mvn clean package test
  
