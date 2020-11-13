@@ -1,9 +1,9 @@
-version: 2
-jobs:
-  build:
-    docker: # See https://docs.docker.com/get-started/#docker-concepts if you are new to Docker.
-      - image: circleci/java
-    steps:
-      - checkout
-      - run: mvn clean package test exec:java
- 
+version: 2.1
+
+orbs:
+  maven: circleci/maven@0.0.12
+
+workflows:
+  maven_test:
+    jobs:
+      - maven/test # checkout, build, test, and upload test results
